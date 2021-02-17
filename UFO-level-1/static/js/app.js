@@ -14,9 +14,11 @@ var clearButton= d3.select("#clear-btn");
 var form = d3.select("#form");
 filterButton.on("click", runEnter);
 form.on("submit", runEnter);
+clearButton.on("click", runReset)
 console.log(form);
 
 function runEnter() {
+    
     //prevent page from refreshing
     d3.event.preventDefault();
     //Select the input element and get the raw HTML node
@@ -27,6 +29,21 @@ function runEnter() {
     //Filter the date
     var filteredData = tableData.filter(i => i.datetime === inputValue); 
     console.log(filteredData)
-    // var dates = filteredData.map(eventDate => eventDate.datetime);
-    // console.log(dates);
+    // Clean up the previous value
+    var tbody = d3.select("tbody");
+    //clear the screen
+    tbody.html("")
+    //construct the table rows and columns & insert data
+    filteredData.forEach(function(ufoReport){
+        var row = tbody.append("tr");
+        Object.entries(ufoReport).forEach(function([key, value]){
+            var cell = row.append('td');
+            cell.text(value)
+        });
+    });
 };
+function runReset() {
+    document.getElementById("form").reset();
+    var tbody = d3.select("tbody");
+    tbody.html("")
+ };
