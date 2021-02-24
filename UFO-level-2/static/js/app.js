@@ -11,8 +11,11 @@ tableData.forEach((ufoReport)=> {
             cell.text(value)
         });
 });
-// Getting a reference to the input element on the page with the id property set to 'input-field'
-var form = d3.select("#filter-btn");
+//select the  filter button
+var filterButton= d3.select("#filter-btn");
+//select the  clear button
+var clearButton= d3.select("#clear-btn");
+
  //Select the input element and get the raw HTML node
 var iDate= d3.select("#datetime");
 var iCity= d3.select("#city");
@@ -20,9 +23,10 @@ var iState= d3.select("#state");
 var iCountry= d3.select("#country");
 var iShape= d3.select("#shape");
 console.log(iDate);
-form.on("click", runEnter);
- 
-// form.on("submit", runEnter);
+filterButton.on("click", runEnter);
+var form = d3.select("#form"); 
+form.on("change", runEnter);
+clearButton.on("click", runReset);
 
 function runEnter() {
   
@@ -70,8 +74,8 @@ function runEnter() {
         });
     });
 };
-// function runReset() {
-//     document.getElementById("form").reset();
-//     var tbody = d3.select("tbody");
-//     tbody.html("")
- 
+function runReset() {
+    document.getElementById("form").reset();
+    var tbody = d3.select("tbody");
+    tbody.html("")
+};
