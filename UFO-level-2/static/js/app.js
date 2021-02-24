@@ -44,12 +44,18 @@ function runEnter() {
     // Initialize the filtered data with tableData
     filteredData = tableData;
     //Filter the date
-    if (vDate){
+    if (vDate && vCity){
+        console.log("************")
+        var multiFilter = tableData.filter(i => i.datetime === vDate); 
+        var filteredData = multiFilter.filter(i => i.city === vCity)
+        console.log(filteredData);
+    }
+    else if (vDate){
     var filteredData = tableData.filter(i => i.datetime === vDate); 
             
     }
     else if(vCity) {
-        console.log("in city")
+        
         var filteredData = tableData.filter(i => i.city === vCity);
         
     }
@@ -63,6 +69,7 @@ function runEnter() {
     else if(vShape){
         var filteredData = tableData.filter(i => i.shape === vShape);
     }
+    
     console.log(filteredData)
     //Display the filtered data
     filteredData.forEach((ufoReport)=> {
