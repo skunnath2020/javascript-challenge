@@ -137,9 +137,9 @@ select {
   /* Firefox 18- */
   color: #8e979f;
 }
-#filter-btn {
+/* #filter-btn {
   display: none;
-}
+} */
 /* media queries which will only be activated at specific screen sizes */
 @media (max-width: 800px) {
   #table-area td {

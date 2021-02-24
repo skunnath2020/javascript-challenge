@@ -25,7 +25,11 @@ function runEnter() {
     var inputElement= d3.select("#datetime");
     // Get the value property of the input element
     var inputValue= inputElement.property("value");
-    console.log(inputValue)
+    // if (inputValue == '') {
+    //     alert("There are no events for this date; Please enter another date!");
+    //     document.getElementById("#datetime").focus();
+    //        }
+    // console.log(inputValue)
     //Filter the date
     var filteredData = tableData.filter(i => i.datetime === inputValue); 
     console.log(filteredData)
